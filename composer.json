@@ -1,0 +1,33 @@
+{
+  "name": "gather/gather",
+  "description": "A lightning parse library for PHP",
+  "keywords": ["parser", "regexp", "crawler"],
+  "homepage": "https://github.com/duamelgroup/gather.php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sevans Duamel",
+      "email": "sevansd@gmail.com",
+      "homepage": "http://duamelgroup.ru/",
+      "role": "Creator/Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.1.x",
+    "phpunit/php-code-coverage": "2.x",
+    "squizlabs/php_codesniffer": "1.4.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Gather\\": "src/Gather/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Gather\\Tests\\": "tests/Gather/Tests"
+    }
+  }
+}
