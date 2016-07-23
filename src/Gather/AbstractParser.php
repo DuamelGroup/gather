@@ -2,10 +2,16 @@
 
 namespace Gather;
 
-Abstract class AbstractParser {
+/**
+ * Class AbstractParser
+ * @package Gather
+ * @author Sevans Duamel <sevansd@gmail.com>
+ */
+Abstract class AbstractParser
+{
 
     /**
-     * @var string
+     * @var Data
      */
     public $data;
 
@@ -19,17 +25,38 @@ Abstract class AbstractParser {
      */
     protected $options;
 
-//    public $
+    public $acceptHTTPCodes = [
+        100, 101, 102,
+        200,
+        302, 304
+    ];
 
-    public function getData($url) {
+    /**
+     * AbstractParser constructor.
+     */
+    public function __construct()
+    {
+        $this->data = new Data();
+    }
+
+    /**
+     * Get page data from url
+     * @param string $url
+     * @return bool
+     */
+    public function getData($url)
+    {
         $this->curl = curl_init($url);
-        if(!empty($this->options)) {
-            foreach($this->options as $option => $value) {
+        if (!empty($this->options)) {
+            foreach ($this->options as $option => $value) {
                 curl_setopt($this->curl, $option, $value);
             }
         }
-        //@todo: Add check http code
-        $this->data = curl_exec($this->curl);
-        return $this->data;
+        $this->data->content = curl_exec($this->curl);
+        $this->data->fill($this->curl);
+        if(!in_array($this->data->httpCode, $this->acceptHTTPCodes)) {
+            return false;
+        }
+        return true;
     }
 }
