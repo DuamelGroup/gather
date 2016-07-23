@@ -2,7 +2,14 @@
 
 namespace Gather;
 
-class Data {
+/**
+ * Class Data
+ *
+ * @package Gather
+ * @author  Sevans Duamel <sevansd@gmail.com>
+ */
+class Data
+{
 
     /**
      * @var int
