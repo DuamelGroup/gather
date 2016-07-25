@@ -13,3 +13,4 @@ ini_set('session.cache_limiter', '');   // Don't send cache headers when testing
 // Load our autoloader, and add our Test class namespace
 $autoloader = require(__DIR__ . '/../vendor/autoload.php');
 $autoloader->add('Gather\Tests', __DIR__);
+$autoloader->add('Gather\Tests\Library', __DIR__);
